@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Elevate Clean Pro raises the standard of residential cleaning in Greater Sacramento. Serving Granite Bay, Roseville, Rocklin, Folsom, El Dorado Hills, and Lincoln. Get a free home cleaning estimate online today.">
+  <meta name="keywords" content="house cleaning sacramento, maid service granite bay, cleaning services folsom, deep clean roseville, move out cleaning rocklin, el dorado hills house cleaners, home cleaning lincoln tx">
+  <meta name="author" content="Elevate Clean Pro">
+  <title>Elevate Clean Pro | Premium Residential Cleaning in Greater Sacramento</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="dark-theme">
+
+  <!-- Background Ambient Glow Blobs -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- Sleek Announcement Bar -->
+  <div class="announcement-bar">
+    <p>⚡ <strong>Sacramento Coverage Update:</strong> Vetted expert crews ready for Granite Bay, Folsom & surrounding suburbs. <a href="#booking" class="scroll-link">Request a Free Estimate</a></p>
+  </div>
+
+  <!-- Header Section -->
+  <header class="main-header">
+    <div class="header-container">
+      <a href="#" class="logo">
+        <img src="assets/logo.png" alt="Elevate Clean Pro Logo" class="logo-img">
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav">
+        <ul>
+          <li><a href="#" class="nav-link active">Home</a></li>
+          <li class="dropdown-item">
+            <a href="#services" class="nav-link dropdown-trigger">Services <i class="fa-solid fa-chevron-down"></i></a>
+            <div class="dropdown-menu">
+              <div class="dropdown-grid">
+                <div class="dropdown-col">
+                  <h3>Core Services</h3>
+                  <a href="#services" onclick="selectService('standard')"><i class="fa-solid fa-broom"></i> Standard Clean</a>
+                  <a href="#services" onclick="selectService('deep')"><i class="fa-solid fa-sparkles"></i> Deep Clean</a>
+                  <a href="#services" onclick="selectService('recurring')"><i class="fa-solid fa-calendar-days"></i> Recurring Care</a>
+                </div>
+                <div class="dropdown-col">
+                  <h3>Specialty Cleanings</h3>
+                  <a href="#services" onclick="selectService('move-in')"><i class="fa-solid fa-truck-moving"></i> Move-In Cleaning</a>
+                  <a href="#services" onclick="selectService('move-out')"><i class="fa-solid fa-truck-moving"></i> Move-Out Cleaning</a>
+                  <a href="#services" onclick="selectService('airbnb')"><i class="fa-solid fa-key"></i> Airbnb Turnovers</a>
+                </div>
+                <div class="dropdown-col">
+                  <h3>More Options</h3>
+                  <a href="#services" onclick="selectService('apartment')"><i class="fa-solid fa-building"></i> Apartment Condo</a>
+                  <a href="#services" onclick="selectService('post-con')"><i class="fa-solid fa-helmet-safety"></i> Post-Construction</a>
+                  <a href="#services" onclick="selectService('pre-listing')"><i class="fa-solid fa-house-circle-check"></i> Pre-Listing/Sale</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+          <li><a href="#why-choose-us" class="nav-link">Why Choose Us</a></li>
+          <li><a href="#booking" class="nav-link">Get Free Quote</a></li>
+          <li><a href="#locations" class="nav-link">Locations</a></li>
+        </ul>
+      </nav>
+
+      <!-- CTA Buttons (Header) -->
+      <div class="header-ctas">
+        <a href="tel:9165550199" class="phone-link"><i class="fa-solid fa-phone"></i> (916) 555-0199</a>
+        <a href="#booking" class="btn btn-primary header-btn">Get Quote</a>
+        <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="drawer-header">
+      <a href="#" class="logo">
+        <img src="assets/logo.png" alt="Elevate Clean Pro Logo" class="logo-img">
+      </a>
+      <button class="drawer-close" id="drawer-close" aria-label="Close Menu">&times;</button>
+    </div>
+    
+    <!-- Centered Logo inside Drawer when menu is open -->
+    <div class="drawer-center-hero">
+      <img src="assets/logo.png" alt="Elevate Clean Pro Logo" class="drawer-logo-large">
+    </div>
+
+    <nav class="mobile-nav">
+      <ul>
+        <li><a href="#" class="mobile-link">Home</a></li>
+        <li class="mobile-dropdown">
+          <button class="mobile-dropdown-trigger">Services <i class="fa-solid fa-chevron-down"></i></button>
+          <ul class="mobile-submenu">
+            <li><a href="#services" onclick="selectServiceMobile('standard')">Standard House Cleaning</a></li>
+            <li><a href="#services" onclick="selectServiceMobile('deep')">Deep House Cleaning</a></li>
+            <li><a href="#services" onclick="selectServiceMobile('recurring')">Recurring Cleaning</a></li>
+            <li><a href="#services" onclick="selectServiceMobile('move-in')">Move-In / Move-Out</a></li>
+            <li><a href="#services" onclick="selectServiceMobile('airbnb')">Airbnb & Vacation Rentals</a></li>
+            <li><a href="#services" onclick="selectServiceMobile('post-con')">Post-Construction Cleanup</a></li>
+          </ul>
+        </li>
+        <li><a href="#how-it-works" class="mobile-link">How It Works</a></li>
+        <li><a href="#why-choose-us" class="mobile-link">Why Choose Us</a></li>
+        <li><a href="#booking" class="mobile-link">Get Free Quote</a></li>
+        <li><a href="#locations" class="mobile-link">Service Areas</a></li>
+      </ul>
+    </nav>
+    <div class="drawer-footer">
+      <a href="tel:9165550199" class="btn btn-secondary w-full text-center"><i class="fa-solid fa-phone"></i> Call (916) 555-0199</a>
+      <a href="#booking" class="btn btn-primary w-full text-center mt-3">Get Quote Online</a>
+    </div>
+  </div>
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-tint-overlay"></div>
+    <div class="hero-content-centered">
+      <span class="badge"><span class="badge-dot"></span> Next-Gen Residential Cleaners</span>
+      
+      <!-- Interactive Center Medallion matching center-stamped logo -->
+      <div class="hero-glass-medallion">
+        <div class="medallion-glow"></div>
+        <img src="assets/logo.png" alt="Elevate Clean Pro" class="medallion-logo">
+      </div>
+
+      <h1 class="hero-title-centered">A new era of clean. <span>Superbly detailed.</span></h1>
+      <p class="hero-subtitle-centered">Experience Greater Sacramento's most detailed, luxury residential cleaning care. Dedicated, bonded, and guaranteed.</p>
+      
+      <div class="hero-features-centered">
+        <div class="feature-tag"><i class="fa-solid fa-shield-halved"></i> Vetted & Bonded</div>
+        <div class="feature-tag"><i class="fa-solid fa-clover"></i> Eco-Safe Products</div>
+        <div class="feature-tag"><i class="fa-solid fa-medal"></i> 100% Satisfaction</div>
+      </div>
+
+      <div class="hero-actions-centered">
+        <a href="#booking" class="btn btn-primary btn-lg">Get Free Quote <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#services" class="btn btn-secondary btn-lg">Explore Services</a>
+      </div>
+    </div>
+  </section>  <!-- How It Works (Three Steps) -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="section-container">
+      <div class="section-header text-center">
+        <span class="section-tag">Seamless Process</span>
+        <h2 class="section-title">Your home elevated in 3 simple steps</h2>
+        <p class="section-subtitle">We have designed our service to be smooth, stress-free, and incredibly easy from start to finish.</p>
+      </div>
+
+      <div class="steps-grid">
+        <!-- Step 1 -->
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <div class="step-icon-wrapper">
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+          </div>
+          <h3>Request a Quote</h3>
+          <p>Fill out our simple contact form below with details about your space. It takes less than 60 seconds to submit.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <div class="step-icon-wrapper">
+            <i class="fa-solid fa-calendar-check"></i>
+          </div>
+          <h3>Get Matched</h3>
+          <p>We'll provide a transparent estimate and match you with our expert, local cleaning technicians for your scheduled time slot.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <div class="step-icon-wrapper">
+            <i class="fa-solid fa-face-smile-beam"></i>
+          </div>
+          <h3>Enjoy Clean living</h3>
+          <p>Sit back and relax while our vetted, insured pros raise the standard of clean in your home, backed by our 100% satisfaction guarantee.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services-section" id="services">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-header-left">
+          <span class="section-tag">Our Cleaning Services</span>
+          <h2 class="section-title">Professional care customized for your home</h2>
+          <p class="section-subtitle">From routine maintenance to heavy-duty deep cleans, we offer detailed services backed by our 100% satisfaction guarantee.</p>
+        </div>
+        <div class="section-header-right">
+          <a href="#booking" class="btn btn-secondary">Request Free Estimate <i class="fa-solid fa-sliders"></i></a>
+        </div>
+      </div>
+
+      <!-- Main Services Carousel -->
+      <div class="services-carousel-container">
+        <button class="services-nav-btn prev-btn" id="services-prev" aria-label="Previous Service">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        
+        <div class="services-carousel-viewport">
+          <div class="services-carousel-track" id="services-carousel-track">
+            <!-- Card 1: Standard Cleaning -->
+            <div class="service-card" data-service="standard">
+              <div class="service-image-container">
+                <img src="assets/service-standard.png" alt="Standard House Cleaning" class="service-image">
+              </div>
+              <div class="service-content">
+                <div class="service-icon"><i class="fa-solid fa-broom"></i></div>
+                <h3>Standard House Cleaning</h3>
+                <p>Our signature maintenance service. Dusting, vacuuming, mopping, bathroom sanitization, kitchen wipe-down, and trash removal to keep your home consistently fresh.</p>
+                <ul class="service-bullets">
+                  <li><i class="fa-solid fa-circle-check"></i> Kitchen countertops & stovetop sanitizing</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Full bathroom cleaning & sanitizing</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Dusting all accessible furniture & items</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Floors vacuumed and thoroughly mopped</li>
+                </ul>
+                <div class="service-footer">
+                  <button onclick="bookSpecificService('Standard Cleaning')" class="btn btn-outline btn-sm">Get Free Quote</button>
+                  <span class="service-details-toggle">View Details <i class="fa-solid fa-plus"></i></span>
+                </div>
+                <!-- Expanded Details -->
+                <div class="service-expanded-details">
+                  <p>Ideal for homes cleaned within the last 3-4 weeks. We cover all basic tidying and deep wipe-downs of major touchpoints. Perfect for recurring schedules!</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Deep Cleaning -->
+            <div class="service-card" data-service="deep">
+              <div class="service-image-container">
+                <img src="assets/service-deep.png" alt="Deep House Cleaning" class="service-image">
+              </div>
+              <div class="service-content">
+                <div class="service-icon"><i class="fa-solid fa-sparkles"></i></div>
+                <h3>Deep House Cleaning</h3>
+                <p>A comprehensive, heavy-duty cleaning that tackles accumulated dust, grime, and hard-to-reach areas. Highly recommended for first-time visits.</p>
+                <ul class="service-bullets">
+                  <li><i class="fa-solid fa-circle-check"></i> Hand-washing cabinet fronts & baseboards</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Scrubbing tub/shower tiles & grout lines</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Cleaning vents, light switches, & door frames</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Dusting high light fixtures & ceiling fans</li>
+                </ul>
+                <div class="service-footer">
+                  <button onclick="bookSpecificService('Deep Cleaning')" class="btn btn-outline btn-sm">Get Free Quote</button>
+                  <span class="service-details-toggle">View Details <i class="fa-solid fa-plus"></i></span>
+                </div>
+                <div class="service-expanded-details">
+                  <p>We dedicate extra time and elbow grease to remove built-up soap scum, grease, and dust. Perfect for changing seasons or preparing for guests.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3: Move-In/Out Cleaning -->
+            <div class="service-card" data-service="move-in">
+              <div class="service-image-container">
+                <img src="assets/service-moving.png" alt="Move In/Out Cleaning" class="service-image">
+              </div>
+              <div class="service-content">
+                <div class="service-icon"><i class="fa-solid fa-truck-moving"></i></div>
+                <h3>Move-In / Move-Out Cleaning</h3>
+                <p>Designed to make your transition seamless. We deep-clean every corner of an empty home, inside drawers, cabinets, and appliances to prepare it for move-in.</p>
+                <ul class="service-bullets">
+                  <li><i class="fa-solid fa-circle-check"></i> Inside refrigerator, oven, & cabinets included</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Vacuuming tracks & dusting blinds/shutters</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Thorough baseboard scrubbing & wall spot-cleaning</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Total sanitize of bathrooms & kitchen utilities</li>
+                </ul>
+                <div class="service-footer">
+                  <button onclick="bookSpecificService('Move-In/Move-Out Cleaning')" class="btn btn-outline btn-sm">Get Free Quote</button>
+                  <span class="service-details-toggle">View Details <i class="fa-solid fa-plus"></i></span>
+                </div>
+                <div class="service-expanded-details">
+                  <p>Leaves the home spotless for new tenants or to satisfy lease agreements for security deposit returns. Includes all standard deep clean checklist items plus interior appliance packages.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4: Airbnb/Vacation Rental Cleaning -->
+            <div class="service-card" data-service="airbnb">
+              <div class="service-image-container">
+                <img src="assets/service-airbnb.png" alt="Airbnb Vacation Rental Cleaning" class="service-image">
+              </div>
+              <div class="service-content">
+                <div class="service-icon"><i class="fa-solid fa-key"></i></div>
+                <h3>Vacation Rental & Airbnb Cleaning</h3>
+                <p>Fast-paced, hotel-quality cleanings between guest stays. We focus on sanitation, visual perfection, restyling, restock checklists, and guest-readiness.</p>
+                <ul class="service-bullets">
+                  <li><i class="fa-solid fa-circle-check"></i> Washing & changing linens/towels</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Toiletries and amenities restocking tracking</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Staging furniture, pillows, and decorative items</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Immediate damage reporting & photo validation</li>
+                </ul>
+                <div class="service-footer">
+                  <button onclick="bookSpecificService('Vacation Rental/Airbnb Cleaning')" class="btn btn-outline btn-sm">Get Free Quote</button>
+                  <span class="service-details-toggle">View Details <i class="fa-solid fa-plus"></i></span>
+                </div>
+                <div class="service-expanded-details">
+                  <p>We work on tight timelines to match check-in schedules. We ensure a consistent 5-star clean experience for your short-term rental guests.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 5: Post-Construction Cleaning -->
+            <div class="service-card" data-service="post-con">
+              <div class="service-image-container">
+                <img src="assets/service-post-con.png" alt="Post Construction Cleaning" class="service-image">
+              </div>
+              <div class="service-content">
+                <div class="service-icon"><i class="fa-solid fa-helmet-safety"></i></div>
+                <h3>Post-Construction Cleaning</h3>
+                <p>Removing fine drywall dust, sawdust, paint splatters, and construction residues from a newly built or renovated home, rendering it completely move-in ready.</p>
+                <ul class="service-bullets">
+                  <li><i class="fa-solid fa-circle-check"></i> HEPA-filter vacuuming of air ducts & vents</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Wiping fine dust from walls, ceilings, & surfaces</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Scraping paint & labels off new windows/glass</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Double vacuum/mopping of hard floors & tiles</li>
+                </ul>
+                <div class="service-footer">
+                  <button onclick="bookSpecificService('Post-Construction Cleaning')" class="btn btn-outline btn-sm">Get Free Quote</button>
+                  <span class="service-details-toggle">View Details <i class="fa-solid fa-plus"></i></span>
+                </div>
+                <div class="service-expanded-details">
+                  <p>Renovations leave microscopic dust that settles for weeks. We utilize specialized vacuums and microfiber techniques to trap and eliminate 99% of dust particles.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 6: Custom & Specialized Cleans -->
+            <div class="service-card specialty-card">
+              <div class="specialty-bg"></div>
+              <div class="service-content">
+                <div class="service-icon"><i class="fa-solid fa-circle-nodes"></i></div>
+                <h3>Additional Cleanings & Same-Day Services</h3>
+                <p>Need something specific? We offer same-day cleanings (subject to availability), pre-listing house preparation, apartment cleaning, and custom programs.</p>
+                <ul class="specialty-list">
+                  <li><span class="label">🏢 Apartment & Condo</span> Optimized checklist for smaller spaces.</li>
+                  <li><span class="label">🏡 Pre-Listing Preparation</span> Make the home look flawless for sale.</li>
+                  <li><span class="label">⚡ Same-Day Service</span> For emergency cleanings (Call for availability).</li>
+                </ul>
+                <div class="service-footer mt-auto">
+                  <a href="#booking" class="btn btn-primary btn-sm w-full text-center">Get Free Estimate</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <button class="services-nav-btn next-btn" id="services-next" aria-label="Next Service">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Witness the Transformation (Before/After Slider Section) -->
+  <section class="transformation-section" id="transformation-showcase">
+    <div class="section-container">
+      <div class="section-header text-center">
+        <span class="section-tag">Interactive Showcase</span>
+        <h2 class="section-title">Witness our meticulous results</h2>
+        <p class="section-subtitle">Drag the handle to wipe away the grime and reveal our detailed clean on the exact same kitchen scenery.</p>
+      </div>
+
+      <div class="slider-outer-container">
+        <!-- Before/After Slider Container -->
+        <div class="before-after-container" id="before-after-slider">
+          <!-- After State (Clean Image underneath) -->
+          <div class="after-wrapper">
+            <img src="assets/hero-clean.png" alt="Clean Kitchen Counter" class="slider-image">
+            <div class="state-badge badge-after">AFTER ELEVATE CLEAN</div>
+          </div>
+          <!-- Before State (Dirty Image on top, clipped) -->
+          <div class="before-wrapper" id="before-img-wrapper">
+            <div class="before-image-inner" id="before-img-inner">
+              <img src="assets/hero-dirty.png" alt="Dirty Messy Kitchen Counter" class="slider-image">
+            </div>
+            <div class="state-badge badge-before">BEFORE CLEANING</div>
+          </div>
+          <!-- Slider Handle -->
+          <div class="slider-handle" id="slider-handle">
+            <div class="handle-line"></div>
+            <div class="handle-button">
+              <i class="fa-solid fa-arrows-left-right"></i>
+            </div>
+            <div class="handle-line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bento Grid Section -->
+  <section class="bento-section" id="why-choose-us">
+    <div class="section-container">
+      <div class="section-header text-center">
+        <span class="section-tag">Trust & Footprint</span>
+        <h2 class="section-title">The Elevate Clean Pro Standard</h2>
+        <p class="section-subtitle">A quick snapshot of why Sacramento homeowners choose our premium services time and time again.</p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Card 1: Interactive Map -->
+        <div class="bento-card bento-map-card" id="locations">
+          <div class="bento-card-header">
+            <h3>Interactive Coverage Map</h3>
+            <p>Hover over the pins to see active crews in your neighborhood</p>
+          </div>
+          <div class="bento-map-wrapper">
+            <div class="map-style-control">
+              <button id="map-style-satellite" class="map-style-btn active"><i class="fa-solid fa-earth-americas"></i> Satellite</button>
+              <button id="map-style-dark" class="map-style-btn"><i class="fa-solid fa-moon"></i> Obsidian</button>
+            </div>
+            <div id="service-map" class="interactive-map"></div>
+          </div>
+          <div class="bento-map-footer">
+            <div class="location-chips">
+              <span>📍 Granite Bay</span>
+              <span>📍 Roseville</span>
+              <span>📍 Rocklin</span>
+              <span>📍 Folsom</span>
+              <span>📍 El Dorado Hills</span>
+              <span>📍 Lincoln</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Satisfaction Stat Box -->
+        <div class="bento-card bento-stat-card">
+          <div class="stat-circle">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Guarantee</span>
+          </div>
+          <h3>Risk-Free Cleaning</h3>
+          <p>If you're not absolutely thrilled with any aspect of our service, we'll return to clean it again for free. No questions asked.</p>
+        </div>
+
+        <!-- Card 3: Credential Bullet Box -->
+        <div class="bento-card bento-check-card">
+          <div class="bento-card-header">
+            <h3>Verified Security</h3>
+            <p>Your safety is our top priority</p>
+          </div>
+          <ul class="bento-checklist">
+            <li><i class="fa-solid fa-circle-check"></i> $2 Million General Liability Insurance</li>
+            <li><i class="fa-solid fa-circle-check"></i> Complete Workers' Compensation Coverage</li>
+            <li><i class="fa-solid fa-circle-check"></i> In-Depth Criminal Background Checks</li>
+            <li><i class="fa-solid fa-circle-check"></i> Professional In-House Training</li>
+          </ul>
+        </div>
+
+        <!-- Card 4: Google Reviews Carousel -->
+        <div class="bento-card bento-reviews-card" id="reviews">
+          <div class="bento-reviews-header">
+            <div>
+              <h3>Neighborhood Testimonials</h3>
+              <p>Hear from homeowners in your area</p>
+            </div>
+            <div class="google-trust-badge">
+              <span class="google-txt">Google</span>
+              <div class="g-stars">
+                5.0 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <span>180+ Reviews</span>
+            </div>
+          </div>
+
+          <!-- Review Slider Carousel -->
+          <div class="testimonial-slider-container">
+            <div class="testimonial-track" id="testimonial-track">
+              <!-- Slide 1 -->
+              <div class="testimonial-card">
+                <div class="test-header">
+                  <div class="reviewer-avatar">Sarah M.</div>
+                  <div class="reviewer-meta">
+                    <h4>Sarah M.</h4>
+                    <p>Granite Bay resident</p>
+                  </div>
+                </div>
+                <p class="review-text">"I've been using Elevate Clean Pro for bi-weekly cleanings for over six months, and they are phenomenal. The attention to detail is outstanding—my baseboards and window tracks are spotless! They are reliable, respectful, and keep my home feeling like a sanctuary."</p>
+                <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified Google Review</span>
+              </div>
+
+              <!-- Slide 2 -->
+              <div class="testimonial-card">
+                <div class="test-header">
+                  <div class="reviewer-avatar">David K.</div>
+                  <div class="reviewer-meta">
+                    <h4>David K.</h4>
+                    <p>East Roseville resident</p>
+                  </div>
+                </div>
+                <p class="review-text">"We booked their deep clean package before listing our home for sale. The difference was night and day! The kitchen and baths looked brand new. We got multiple comments on how clean the house smelled during the open house. Absolutely worth every penny!"</p>
+                <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified Google Review</span>
+              </div>
+
+              <!-- Slide 3 -->
+              <div class="testimonial-card">
+                <div class="test-header">
+                  <div class="reviewer-avatar">Emily R.</div>
+                  <div class="reviewer-meta">
+                    <h4>Emily R.</h4>
+                    <p>Folsom resident</p>
+                  </div>
+                </div>
+                <p class="review-text">"With two toddlers and a dog, keeping the floors clean is impossible. Elevate Clean Pro has been a lifesaver. The weekly clean keeps our allergies in check and removes pet hair completely. Plus, they use pet-safe, natural products which is crucial for us."</p>
+                <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified Google Review</span>
+              </div>
+
+              <!-- Slide 4 -->
+              <div class="testimonial-card">
+                <div class="test-header">
+                  <div class="reviewer-avatar">Michael T.</div>
+                  <div class="reviewer-meta">
+                    <h4>Michael T.</h4>
+                    <p>El Dorado Hills resident</p>
+                  </div>
+                </div>
+                <p class="review-text">"Stellar move-out cleaning. The landlord is notoriously picky, but the team left the apartment immaculate. Got my full security deposit refund back with zero questions. Communication is super clear and fast!"</p>
+                <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified Google Review</span>
+              </div>
+            </div>
+
+            <div class="slider-controls">
+              <button class="slider-nav-btn prev-btn" id="reviews-prev" aria-label="Previous Review"><i class="fa-solid fa-chevron-left"></i></button>
+              <div class="slider-dots" id="reviews-dots"></div>
+              <button class="slider-nav-btn next-btn" id="reviews-next" aria-label="Next Review"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Add-ons Visual Grid Section -->
+  <section class="addons-section">
+    <div class="section-container">
+      <div class="section-header text-center">
+        <span class="section-tag">Add-On Extras</span>
+        <h2 class="section-title">Customize with detailed cleaning add-ons</h2>
+        <p class="section-subtitle">Add any of these custom additions to your request in the contact form below.</p>
+      </div>
+
+      <div class="addons-grid">
+        <div class="addon-item static-addon">
+          <div class="addon-icon"><i class="fa-solid fa-snowflake"></i></div>
+          <div class="addon-info">
+            <h4>Inside Refrigerator</h4>
+            <p>Empty, sanitize, and organize interior shelves.</p>
+          </div>
+        </div>
+
+        <div class="addon-item static-addon">
+          <div class="addon-icon"><i class="fa-solid fa-fire-burner"></i></div>
+          <div class="addon-info">
+            <h4>Inside Oven</h4>
+            <p>Remove grease, baked-on food, and carbon build-up.</p>
+          </div>
+        </div>
+
+        <div class="addon-item static-addon">
+          <div class="addon-icon"><i class="fa-solid fa-window-maximize"></i></div>
+          <div class="addon-info">
+            <h4>Interior Windows</h4>
+            <p>Glass cleaned streak-free, plus tracks wiped.</p>
+          </div>
+        </div>
+
+        <div class="addon-item static-addon">
+          <div class="addon-icon"><i class="fa-solid fa-box-open"></i></div>
+          <div class="addon-info">
+            <h4>Inside Cabinets</h4>
+            <p>Vacuum and wipe drawers, drawer fronts, & shelves.</p>
+          </div>
+        </div>
+
+        <div class="addon-item static-addon">
+          <div class="addon-icon"><i class="fa-solid fa-paint-roller"></i></div>
+          <div class="addon-info">
+            <h4>Baseboard Detailing</h4>
+            <p>Detailed wipe down to remove scuffs and heavy dust.</p>
+          </div>
+        </div>
+
+        <div class="addon-item static-addon">
+          <div class="addon-icon"><i class="fa-solid fa-warehouse"></i></div>
+          <div class="addon-info">
+            <h4>Interior Garage Sweep</h4>
+            <p>Wipe down main storage walls, sweep, and tidy floor.</p>
+          </div>
+        </div>
+
+        <div class="addon-item static-addon">
+          <div class="addon-icon"><i class="fa-solid fa-soap"></i></div>
+          <div class="addon-info">
+            <h4>Laundry (Wash & Fold)</h4>
+            <p>Load of laundry washed, dried, and neatly folded.</p>
+          </div>
+        </div>
+
+        <div class="addon-item static-addon">
+          <div class="addon-icon"><i class="fa-solid fa-sink"></i></div>
+          <div class="addon-info">
+            <h4>Dishwashing</h4>
+            <p>Wash, rinse, and put away dishes, pots, and pans.</p>
+          </div>
+        </div>
+
+        <div class="addon-item static-addon">
+          <div class="addon-icon"><i class="fa-solid fa-bed"></i></div>
+          <div class="addon-info">
+            <h4>Change Bed Linens</h4>
+            <p>Strip old linens, change sheets, and make beds fresh.</p>
+          </div>
+        </div>
+
+        <div class="addon-item static-addon">
+          <div class="addon-icon"><i class="fa-solid fa-paw"></i></div>
+          <div class="addon-info">
+            <h4>Pet Hair Removal</h4>
+            <p>Specialized vacuum brush detangling for heavy hair shedding.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote Booking Form Section -->
+  <section class="booking-section" id="booking">
+    <div class="section-container">
+      <div class="booking-glow-wrapper">
+        <!-- Mockup top header panel -->
+        <div class="mockup-header-bar">
+          <div class="mockup-dots">
+            <span class="dot-red"></span>
+            <span class="dot-yellow"></span>
+            <span class="dot-green"></span>
+          </div>
+          <div class="mockup-address-field">
+            <i class="fa-solid fa-lock"></i> elevatecleanpro.com/get-free-quote
+          </div>
+          <div class="mockup-actions">
+            <i class="fa-solid fa-rotate-right"></i>
+          </div>
+        </div>
+
+        <div class="booking-card-inner">
+          <div class="booking-card-header text-center">
+            <span class="section-tag">Estimate Request</span>
+            <h2 class="section-title">Schedule a clean workspace</h2>
+            <p class="section-subtitle">Fill out the secure fields below. Our Sacramento coordinators will review and confirm details in under 2 hours.</p>
+          </div>
+
+          <div class="iframe-container">
+            <!-- LeadConnector Form Iframe -->
+            <iframe
+                src="https://api.leadconnectorhq.com/widget/form/Y3FFpIiTn8Of0HbmS3g8"
+                style="width:100%;height:100%;border:none;border-radius:0px"
+                id="inline-Y3FFpIiTn8Of0HbmS3g8" 
+                data-layout="{'id':'INLINE'}"
+                data-trigger-type="alwaysShow"
+                data-trigger-value=""
+                data-activation-type="alwaysActivated"
+                data-activation-value=""
+                data-deactivation-type="neverDeactivate"
+                data-deactivation-value=""
+                data-form-name="CBC - Contact Us - A2P Verified"
+                data-height="928"
+                data-layout-iframe-id="inline-Y3FFpIiTn8Of0HbmS3g8"
+                data-form-id="Y3FFpIiTn8Of0HbmS3g8"
+                title="CBC - Contact Us - A2P Verified"
+            >
+            </iframe>
+            <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+          </div>
+
+          <div class="satisfaction-badge-form">
+            <i class="fa-solid fa-certificate"></i>
+            <p><strong>100% Satisfaction Guarantee:</strong> We treat your home like our own. If you are not completely satisfied with our cleaning, we'll return to re-clean for free within 24 hours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="site-footer">
+    <div class="section-container">
+      <div class="footer-top-grid">
+        <!-- Col 1: About & Social -->
+        <div class="footer-col-about">
+          <a href="#" class="logo footer-logo">
+            <img src="assets/logo.png" alt="Elevate Clean Pro Logo" class="logo-img">
+          </a>
+          <p class="footer-about-text">At Elevate Clean Pro, our mission is simple: to raise the standard of residential cleaning by delivering exceptional quality, reliability, and customer care with every single visit. Your home is our priority.</p>
+          <div class="social-links">
+            <a href="https://www.facebook.com/profile.php?id=61590943065281" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/elevatecleanpro/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Services Quick Links -->
+        <div class="footer-col-links">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services" onclick="selectService('standard')">Standard Cleaning</a></li>
+            <li><a href="#services" onclick="selectService('deep')">Deep Cleaning</a></li>
+            <li><a href="#services" onclick="selectService('move-in')">Move-In/Out Cleaning</a></li>
+            <li><a href="#services" onclick="selectService('airbnb')">Airbnb & Condo Care</a></li>
+            <li><a href="#services" onclick="selectService('post-con')">Post-Construction</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Company Links -->
+        <div class="footer-col-links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#booking">Get Free Estimate</a></li>
+            <li><a href="#reviews">Google Reviews</a></li>
+            <li><a href="#locations">Locations Served</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact & Locations -->
+        <div class="footer-col-contact">
+          <h4>Coverage Areas</h4>
+          <p class="coverage-cities">Granite Bay, East Roseville, Rocklin, Folsom, El Dorado Hills, Lincoln & surrounding Sacramento suburbs.</p>
+          
+          <div class="footer-contact-details">
+            <p><i class="fa-solid fa-phone"></i> Support: <a href="tel:9165550199">(916) 555-0199</a></p>
+            <p><i class="fa-solid fa-envelope"></i> Email: <a href="mailto:hello@elevatecleanpro.com">hello@elevatecleanpro.com</a></p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="footer-divider">
+
+      <div class="footer-bottom-flex">
+        <p class="copyright-text">&copy; 2026 Elevate Clean Pro LLC. All rights reserved. Locally owned & operated in California.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <span class="bullet-dot"></span>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Leaflet JS Map Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+  <!-- Custom JS Modules -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>
